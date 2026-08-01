@@ -57,7 +57,7 @@
 .bakery-text-link:hover { color: #bc5d31; }
 .bakery-note { margin-top: 55px; font-family: "DM Mono", monospace; color: #9a755d; font-size: 9px; letter-spacing: .07em; }
 .bakery-note span { color: #c46438; margin-right: 8px; }
-.bakery-hero-art { position: relative; background: linear-gradient(180deg,rgba(50,22,10,.08),rgba(50,22,10,.15)), url('https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=1600&q=90') center/cover; min-height: 540px; }
+.bakery-hero-art { position: relative; background: linear-gradient(180deg,rgba(50,22,10,.08),rgba(50,22,10,.15)), url('/images/hero.jpg') center/cover; min-height: 540px; }
 .bakery-stamp { position: absolute; right: 8%; bottom: 8%; border: 1px solid rgba(255,250,240,.8); border-radius: 50%; height: 112px; width: 112px; display: grid; place-content: center; text-align: center; color: white; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .15em; line-height: 1.6; transform: rotate(11deg); }
 .bakery-promise { border-top: 1px solid #dfd1be; border-bottom: 1px solid #dfd1be; display: grid; grid-template-columns: repeat(3, 1fr); padding: 24px max(24px, calc((100vw - 1320px)/2)); background: #f8f3eb; }
 .bakery-promise p { text-align: center; color: #624735; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .06em; }
@@ -80,7 +80,7 @@
 .bakery-all-link span { color: #c46438; padding-left: 8px; font-size: 15px; }
 .bakery-empty { color: #735846; text-align: center; padding: 40px; }
 .bakery-story { display: grid; grid-template-columns: 1fr 1fr; background: #4b2b1b; color: #fff6e9; }
-.bakery-story-image { min-height: 610px; background: url('https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1400&q=85') center/cover; }
+.bakery-story-image { min-height: 610px; background: url('/images/story.jpg') center/cover; }
 .bakery-story-copy { padding: clamp(60px, 9vw, 145px); display: flex; flex-direction: column; justify-content: center; }
 .bakery-story h2 { color: #fff3e5; }
 .bakery-story-copy > p:not(.bakery-kicker) { font-size: 14px; line-height: 1.9; color: #e0bf9e; max-width: 390px; margin: 30px 0; }

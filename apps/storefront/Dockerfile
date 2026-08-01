@@ -42,7 +42,7 @@ RUN npm run build
 FROM node:20-alpine AS runtime
 WORKDIR /app
 
-RUN apk add --no-cache curl
+RUN for attempt in 1 2 3 4 5; do apk add --no-cache curl && exit 0; sleep 3; done; exit 1
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1

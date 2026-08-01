@@ -42,7 +42,9 @@ export default async function bootstrap({ container }: ExecArgs) {
       const userModule = container.resolve(Modules.USER)
       const existing = await userModule.listUsers({ email })
       if (existing.length > 0) {
-        logger.info(`bootstrap: admin ${email} already exists`)
+        const auth = container.resolve(Modules.AUTH)
+        await auth.updateProvider('emailpass', { entity_id: email, password })
+        logger.info(`bootstrap: reset password for admin ${email}`)
       } else {
         const authModule = container.resolve(Modules.AUTH)
         // Register the emailpass identity first, then attach the user to it —

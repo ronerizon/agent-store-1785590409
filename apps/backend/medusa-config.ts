@@ -28,6 +28,10 @@ module.exports = defineConfig({
     // turn this into a confusing connection error.
     databaseDriverOptions: { connection: { ssl: false } },
     redisUrl,
+    cookieOptions: {
+      secure: String(process.env.MEDUSA_BACKEND_URL || '').startsWith('https://'),
+      sameSite: 'lax',
+    },
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,

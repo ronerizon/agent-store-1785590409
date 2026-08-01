@@ -38,7 +38,7 @@ WORKDIR /app
 
 # curl backs the HEALTHCHECK below; Coolify surfaces it as running:healthy,
 # which the platform polls while provisioning.
-RUN apk add --no-cache curl
+RUN for attempt in 1 2 3 4 5; do apk add --no-cache curl && exit 0; sleep 3; done; exit 1
 
 ENV NODE_ENV=production
 ENV PORT=9000

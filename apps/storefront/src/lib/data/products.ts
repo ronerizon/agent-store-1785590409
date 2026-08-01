@@ -7,6 +7,20 @@ import { SortOptions } from "@modules/store/components/refinement-list/sort-prod
 import { getAuthHeaders, getCacheOptions } from "./cookies"
 import { getRegion, retrieveRegion } from "./regions"
 
+const bakeryImageByHandle: Record<string, string> = {
+  "butter-cloud-croissant": "/images/croissant.jpg",
+  "midnight-chocolate-babka": "/images/babka.jpg",
+  "strawberry-silk-tart": "/images/tart.jpg",
+  "sunday-sourdough": "/images/sourdough.jpg",
+}
+
+const localizeBakeryImages = (product: HttpTypes.StoreProduct) => {
+  const image = bakeryImageByHandle[product.handle || ""]
+  return image
+    ? { ...product, thumbnail: image, images: product.images?.map((item) => ({ ...item, url: image })) }
+    : product
+}
+
 export const listProducts = async ({
   pageParam = 1,
   queryParams,
@@ -76,7 +90,7 @@ export const listProducts = async ({
 
       return {
         response: {
-          products,
+          products: products.map(localizeBakeryImages),
           count,
         },
         nextPage: nextPage,
