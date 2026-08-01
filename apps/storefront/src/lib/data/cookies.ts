@@ -1,5 +1,5 @@
 import "server-only"
-import { cookies as nextCookies } from "next/headers"
+import { cookies as nextCookies, headers as nextHeaders } from "next/headers"
 
 export const getAuthHeaders = async (): Promise<
   { authorization: string } | {}
@@ -49,13 +49,21 @@ export const getCacheOptions = async (
   return { tags: [`${cacheTag}`] }
 }
 
+const useSecureCookies = async () => {
+  const forwardedProto = (await nextHeaders()).get("x-forwarded-proto")
+
+  return forwardedProto
+    ? forwardedProto.split(",")[0].trim() === "https"
+    : process.env.NODE_ENV === "production"
+}
+
 export const setAuthToken = async (token: string) => {
   const cookies = await nextCookies()
   cookies.set("_medusa_jwt", token, {
     maxAge: 60 * 60 * 24 * 7,
     httpOnly: true,
     sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
+    secure: await useSecureCookies(),
   })
 }
 
@@ -77,7 +85,7 @@ export const setCartId = async (cartId: string) => {
     maxAge: 60 * 60 * 24 * 7,
     httpOnly: true,
     sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
+    secure: await useSecureCookies(),
   })
 }
 
