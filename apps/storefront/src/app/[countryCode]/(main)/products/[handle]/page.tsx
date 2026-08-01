@@ -10,6 +10,10 @@ type Props = {
   searchParams: Promise<{ v_id?: string }>
 }
 
+// Product requests use the shopper's cookies and optional variant query, so they
+// must render per request rather than being statically generated.
+export const dynamic = "force-dynamic"
+
 export async function generateStaticParams() {
   try {
     const countryCodes = await listRegions().then((regions) =>
