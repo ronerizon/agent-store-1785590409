@@ -1,112 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { background: #f7f1e8; color: #342216; font-family: "Manrope", sans-serif; }
+}
+
 @layer utilities {
-  /* Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  input:focus ~ label,
-  input:not(:placeholder-shown) ~ label {
-    @apply -translate-y-2 text-xsmall-regular;
-  }
-
-  input:focus ~ label {
-    @apply left-0;
-  }
-
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus {
-    border: 1px solid #212121;
-    -webkit-text-fill-color: #212121;
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-    transition: background-color 5000s ease-in-out 0s;
-  }
-
-  input[type="search"]::-webkit-search-decoration,
-  input[type="search"]::-webkit-search-cancel-button,
-  input[type="search"]::-webkit-search-results-button,
-  input[type="search"]::-webkit-search-results-decoration {
-    -webkit-appearance: none;
-  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar::-webkit-scrollbar-track { background-color: transparent; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  input:focus ~ label, input:not(:placeholder-shown) ~ label { @apply -translate-y-2 text-xsmall-regular; }
+  input:focus ~ label { @apply left-0; }
+  input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus { border: 1px solid #212121; -webkit-text-fill-color: #212121; -webkit-box-shadow: 0 0 0px 1000px #fff inset; transition: background-color 5000s ease-in-out 0s; }
+  input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-results-button, input[type="search"]::-webkit-search-results-decoration { -webkit-appearance: none; }
 }
 
 @layer components {
-  .content-container {
-    @apply max-w-[1440px] w-full mx-auto px-6;
-  }
+  .content-container { @apply max-w-[1440px] w-full mx-auto px-6; }
+  .contrast-btn { @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in; }
+  .text-xsmall-regular { @apply text-[10px] leading-4 font-normal; }
+  .text-small-regular { @apply text-xs leading-5 font-normal; }
+  .text-small-semi { @apply text-xs leading-5 font-semibold; }
+  .text-base-regular { @apply text-sm leading-6 font-normal; }
+  .text-base-semi { @apply text-sm leading-6 font-semibold; }
+  .text-large-regular { @apply text-base leading-6 font-normal; }
+  .text-large-semi { @apply text-base leading-6 font-semibold; }
+  .text-xl-regular { @apply text-2xl leading-[36px] font-normal; }
+  .text-xl-semi { @apply text-2xl leading-[36px] font-semibold; }
+  .text-2xl-regular { @apply text-[30px] leading-[48px] font-normal; }
+  .text-2xl-semi { @apply text-[30px] leading-[48px] font-semibold; }
+  .text-3xl-regular { @apply text-[32px] leading-[44px] font-normal; }
+  .text-3xl-semi { @apply text-[32px] leading-[44px] font-semibold; }
+}
 
-  .contrast-btn {
-    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
-  }
+.bakery-nav { height: 76px; background: rgba(247,241,232,.95); border-bottom: 1px solid #dfd1be; backdrop-filter: blur(12px); }
+.bakery-logo { font-family: "DM Serif Display", Georgia, serif; font-size: 25px; letter-spacing: -.05em; color: #342216; line-height: 1; }
+.bakery-logo span { color: #bc5d31; font-style: italic; }
+.bakery-nav-link { font-family: "DM Mono", monospace; text-transform: uppercase; font-size: 10px; letter-spacing: .08em; color: #765e4a; transition: color .2s; }
+.bakery-nav-link:hover { color: #bc5d31; }
+.bakery-hero { min-height: 680px; display: grid; grid-template-columns: 1fr 1.05fr; background: #efdfca; }
+.bakery-hero-copy { padding: clamp(80px, 12vw, 168px) clamp(32px, 9vw, 150px); display: flex; flex-direction: column; justify-content: center; }
+.bakery-kicker { font-family: "DM Mono", monospace; color: #ba5c32; font-size: 10px; font-weight: 500; letter-spacing: .14em; margin-bottom: 24px; }
+.bakery-hero h1, .bakery-section-head h2, .bakery-story h2, .bakery-footer h2 { font-family: "DM Serif Display", Georgia, serif; color: #392317; font-weight: 400; letter-spacing: -.065em; line-height: .9; }
+.bakery-hero h1 { font-size: clamp(61px, 7vw, 112px); }
+.bakery-hero h1 em, .bakery-section-head em, .bakery-story em, .bakery-footer em { color: #c46438; font-weight: 400; }
+.bakery-intro { max-width: 390px; margin: 31px 0; color: #654a38; font-size: 15px; line-height: 1.8; }
+.bakery-actions { display: flex; align-items: center; gap: 28px; }
+.bakery-button { background: #42271a; color: #fff9ef; padding: 15px 19px; font-size: 12px; font-weight: 700; letter-spacing: .02em; display: inline-flex; align-items: center; gap: 22px; transition: transform .2s, background .2s; }
+.bakery-button:hover { background: #bc5d31; transform: translateY(-2px); }
+.bakery-button span { font-size: 18px; font-weight: 400; }
+.bakery-text-link { color: #4b2e1e; border-bottom: 1px solid #b99478; padding-bottom: 4px; font-size: 12px; font-weight: 700; transition: color .2s; }
+.bakery-text-link:hover { color: #bc5d31; }
+.bakery-note { margin-top: 55px; font-family: "DM Mono", monospace; color: #9a755d; font-size: 9px; letter-spacing: .07em; }
+.bakery-note span { color: #c46438; margin-right: 8px; }
+.bakery-hero-art { position: relative; background: linear-gradient(180deg,rgba(50,22,10,.08),rgba(50,22,10,.15)), url('https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=1600&q=90') center/cover; min-height: 540px; }
+.bakery-stamp { position: absolute; right: 8%; bottom: 8%; border: 1px solid rgba(255,250,240,.8); border-radius: 50%; height: 112px; width: 112px; display: grid; place-content: center; text-align: center; color: white; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .15em; line-height: 1.6; transform: rotate(11deg); }
+.bakery-promise { border-top: 1px solid #dfd1be; border-bottom: 1px solid #dfd1be; display: grid; grid-template-columns: repeat(3, 1fr); padding: 24px max(24px, calc((100vw - 1320px)/2)); background: #f8f3eb; }
+.bakery-promise p { text-align: center; color: #624735; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .06em; }
+.bakery-promise span { color: #c46438; margin-right: 12px; }
+.bakery-products { padding-top: 130px; padding-bottom: 130px; }
+.bakery-section-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 57px; }
+.bakery-section-head h2, .bakery-story h2, .bakery-footer h2 { font-size: clamp(48px, 5.5vw, 80px); }
+.bakery-section-copy { width: 270px; color: #735846; font-size: 13px; line-height: 1.75; margin-bottom: 7px; }
+.bakery-product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+.bakery-product-grid li { min-width: 0; }
+.bakery-product-grid .bakery-card-offset { margin-top: 35px; }
+.bakery-product-grid [data-testid="product-wrapper"] > div:first-child { border-radius: 0; padding: 0; box-shadow: none; background: #e5d5c0; aspect-ratio: .88; }
+.bakery-product-grid [data-testid="product-wrapper"] > div:first-child img { transition: transform .6s ease; }
+.bakery-product-grid a:hover img { transform: scale(1.05); }
+.bakery-product-grid [data-testid="product-wrapper"] > div:last-child { margin-top: 15px; font-family: "DM Serif Display", Georgia, serif; font-size: 17px; color: #402718; }
+.bakery-product-grid [data-testid="product-title"] { color: #402718; font-family: "DM Serif Display", Georgia, serif; font-size: 17px; }
+.bakery-product-grid [data-testid="product-wrapper"] > div:last-child > div { font-family: "DM Mono", monospace; font-size: 10px; color: #ad5d39; }
+.bakery-all-link { text-align: center; margin-top: 64px; }
+.bakery-all-link a { color: #3e2719; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; border-bottom: 1px solid #c98764; padding-bottom: 8px; }
+.bakery-all-link span { color: #c46438; padding-left: 8px; font-size: 15px; }
+.bakery-empty { color: #735846; text-align: center; padding: 40px; }
+.bakery-story { display: grid; grid-template-columns: 1fr 1fr; background: #4b2b1b; color: #fff6e9; }
+.bakery-story-image { min-height: 610px; background: url('https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1400&q=85') center/cover; }
+.bakery-story-copy { padding: clamp(60px, 9vw, 145px); display: flex; flex-direction: column; justify-content: center; }
+.bakery-story h2 { color: #fff3e5; }
+.bakery-story-copy > p:not(.bakery-kicker) { font-size: 14px; line-height: 1.9; color: #e0bf9e; max-width: 390px; margin: 30px 0; }
+.bakery-story .bakery-text-link { color: #f9e9d5; border-color: #b9704f; width: fit-content; }
+.bakery-footer { background: #d57545; padding: 95px 0 26px; }
+.bakery-footer .bakery-kicker { color: #5b2919; }
+.bakery-footer h2 { color: #fff2df; }
+.bakery-footer h2 em { color: #5d2c1d; }
+.bakery-footer-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 96px; }
+.bakery-footer-top .bakery-button { background: #f8ead6; color: #512d1d; }
+.bakery-footer-top .bakery-button:hover { background: #5b2b1c; color: #fff; }
+.bakery-footer-bottom { border-top: 1px solid rgba(80,38,21,.35); padding-top: 23px; color: #6e321f; display: flex; justify-content: space-between; align-items: center; font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: .05em; }
+.bakery-footer .bakery-logo { color: #fff1dd; }
+.bakery-footer .bakery-logo span { color: #5c2a1b; }
 
-  .text-xsmall-regular {
-    @apply text-[10px] leading-4 font-normal;
-  }
+@media (max-width: 768px) {
+  .bakery-hero { grid-template-columns: 1fr; }
+  .bakery-hero-copy { min-height: 580px; padding: 76px 30px; }
+  .bakery-hero-art { min-height: 400px; }
+  .bakery-promise { grid-template-columns: 1fr; gap: 17px; padding: 22px; }
+  .bakery-section-head { align-items: start; flex-direction: column; gap: 22px; }
+  .bakery-product-grid { grid-template-columns: repeat(2, 1fr); gap: 22px 14px; }
+  .bakery-product-grid .bakery-card-offset { margin-top: 25px; }
+  .bakery-story { grid-template-columns: 1fr; }
+  .bakery-story-image { min-height: 400px; }
+  .bakery-footer-top { align-items: start; flex-direction: column; gap: 38px; }
+  .bakery-footer-bottom { align-items: start; flex-direction: column; gap: 12px; }
+}
 
-  .text-small-regular {
-    @apply text-xs leading-5 font-normal;
-  }
-
-  .text-small-semi {
-    @apply text-xs leading-5 font-semibold;
-  }
-
-  .text-base-regular {
-    @apply text-sm leading-6 font-normal;
-  }
-
-  .text-base-semi {
-    @apply text-sm leading-6 font-semibold;
-  }
-
-  .text-large-regular {
-    @apply text-base leading-6 font-normal;
-  }
-
-  .text-large-semi {
-    @apply text-base leading-6 font-semibold;
-  }
-
-  .text-xl-regular {
-    @apply text-2xl leading-[36px] font-normal;
-  }
-
-  .text-xl-semi {
-    @apply text-2xl leading-[36px] font-semibold;
-  }
-
-  .text-2xl-regular {
-    @apply text-[30px] leading-[48px] font-normal;
-  }
-
-  .text-2xl-semi {
-    @apply text-[30px] leading-[48px] font-semibold;
-  }
-
-  .text-3xl-regular {
-    @apply text-[32px] leading-[44px] font-normal;
-  }
-
-  .text-3xl-semi {
-    @apply text-[32px] leading-[44px] font-semibold;
-  }
+/* Product and bag — the same warm counter experience continues after the homepage. */
+.bakery-product-page { gap: clamp(28px, 5vw, 76px); background: #f7f1e8; }
+.bakery-product-page > div { min-width: 0; }
+.bakery-product-page [data-testid="product-title"], .bakery-cart-title, .bakery-empty-cart h1 { font-family: "DM Serif Display", Georgia, serif; color: #402718; font-weight: 400; letter-spacing: -.045em; }
+.bakery-product-info { padding-top: 20px; }
+.bakery-product-info [data-testid="product-description"] { color: #735846; line-height: 1.85; font-size: 14px; }
+.bakery-product-page [data-testid="product-tabs"] { border-color: #decdb7; }
+.bakery-product-page [data-testid="product-tabs"] button { color: #765e4a; }
+.bakery-product-page [data-testid="product-actions"] { border-color: #decdb7; }
+.bakery-product-page img { background: #e6d5c0; }
+.bakery-add-button { border-radius: 0 !important; background: #49291b !important; color: #fff8ed !important; font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; transition: background .2s, transform .2s !important; }
+.bakery-add-button:hover { background: #bd6037 !important; transform: translateY(-2px); }
+.bakery-related h2 { font-family: "DM Serif Display", Georgia, serif; font-size: 44px; font-weight: 400; color: #402718; letter-spacing: -.045em; }
+.bakery-cart-page { min-height: 65vh; background: #f7f1e8; }
+.bakery-cart-items, .bakery-cart-summary { background: #fbf7f0; border: 1px solid #e1d1bd; padding-left: 28px; padding-right: 28px; }
+.bakery-cart-summary { box-shadow: 12px 12px 0 #eadbc8; }
+.bakery-cart-page table { font-size: 13px; }
+.bakery-cart-page table [data-testid="product-title"] { font-family: "DM Serif Display", Georgia, serif; color: #422719; font-size: 18px; }
+.bakery-empty-cart { max-width: 720px; margin: 0 auto; }
+.bakery-empty-cart p { color: #735846; line-height: 1.8; }
+.bakery-empty-cart a { background: #49291b; color: #fff8ed; padding: 14px 20px; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.bakery-empty-cart a:hover { background: #bd6037; }
+@media (max-width: 768px) {
+  .bakery-product-page { gap: 12px; }
+  .bakery-cart-items, .bakery-cart-summary { padding-left: 16px; padding-right: 16px; }
 }

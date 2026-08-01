@@ -10,7 +10,8 @@
 #   2. bootstrap   — admin user + publishable key (see src/scripts/bootstrap.ts).
 #                    Never fatal: a store that can't create its admin should
 #                    still serve, so an operator can fix it by hand.
-#   3. start       — the server.
+#   3. seed bakery catalog — creates the customer-facing products on an empty store.
+#   4. start       — the server.
 #
 # A migration failure IS fatal: serving against a schema the code cannot use
 # produces confusing 500s instead of one clear error in the deploy log.
@@ -31,6 +32,15 @@ elif [ -f ./src/scripts/bootstrap.ts ]; then
     echo "cauchy: bootstrap failed — the server will still start; see above"
 else
   echo "cauchy: WARNING no bootstrap script found — no admin user, no publishable key"
+fi
+
+echo "cauchy: ensuring bakery catalog…"
+if [ -f ./src/scripts/seed-bakery.js ]; then
+  npx medusa exec ./src/scripts/seed-bakery.js || \
+    echo "cauchy: bakery catalog seed failed — the server will still start; see above"
+elif [ -f ./src/scripts/seed-bakery.ts ]; then
+  npx medusa exec ./src/scripts/seed-bakery.ts || \
+    echo "cauchy: bakery catalog seed failed — the server will still start; see above"
 fi
 
 echo "cauchy: starting Medusa…"

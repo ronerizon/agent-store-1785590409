@@ -8,8 +8,9 @@ type ProductInfoProps = {
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
   return (
-    <div id="product-info">
+    <div id="product-info" className="bakery-product-info">
       <div className="flex flex-col gap-y-4 lg:max-w-[500px] mx-auto">
+        <p className="bakery-kicker">FRESH FROM OUR OVEN</p>
         {product.collection && (
           <LocalizedClientLink
             href={`/collections/${product.collection.handle}`}

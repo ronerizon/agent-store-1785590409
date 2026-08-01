@@ -38,6 +38,7 @@ export default function ProductActions({
 
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
+  const [justAdded, setJustAdded] = useState(false)
   const countryCode = useParams().countryCode as string
 
   // If there is only 1 variant, preselect the options
@@ -126,13 +127,17 @@ export default function ProductActions({
 
     setIsAdding(true)
 
-    await addToCart({
-      variantId: selectedVariant.id,
-      quantity: 1,
-      countryCode,
-    })
-
-    setIsAdding(false)
+    try {
+      await addToCart({
+        variantId: selectedVariant.id,
+        quantity: 1,
+        countryCode,
+      })
+      setJustAdded(true)
+      router.refresh()
+    } finally {
+      setIsAdding(false)
+    }
   }
 
   return (
@@ -172,7 +177,7 @@ export default function ProductActions({
             !isValidVariant
           }
           variant="primary"
-          className="w-full h-10"
+          className="bakery-add-button w-full h-12"
           isLoading={isAdding}
           data-testid="add-product-button"
         >
@@ -180,7 +185,9 @@ export default function ProductActions({
             ? "Select variant"
             : !inStock || !isValidVariant
             ? "Out of stock"
-            : "Add to cart"}
+            : justAdded
+            ? "Added to your bag ✓"
+            : "Add to bag"}
         </Button>
         <MobileActions
           product={product}
